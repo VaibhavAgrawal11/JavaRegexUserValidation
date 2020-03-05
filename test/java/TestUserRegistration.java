@@ -30,13 +30,19 @@ public class TestUserRegistration {
     //TEST CASES FOR EMAIL VALIDATION
     @Test
     public void givenEmail_WhenProper_ShouldReturnTrue(){
-        boolean result = validator.checkEmail("abc.xyz@bl.co.in");
-        Assert.assertTrue(result);
+        String[] testCaseArray= {"abc@yahoo.com" ,"abc-100@yahoo.com","abc.100@yahoo.com","abc111@abc.com","abc-100@abc.net","abc.100@abc.com.au","abc@1.com","abc@gmail.com.com"};
+        for (int iterate=0; iterate<testCaseArray.length; iterate++) {
+            boolean result = validator.checkEmail(testCaseArray[iterate]);
+            Assert.assertTrue(result);
+        }
     }
     @Test
     public void givenEmail_WhenImproper_ShouldReturnFalse(){
-        boolean result = validator.checkEmail("abc.xyz@dhsco");
-        Assert.assertFalse(result);
+        String[] testCaseArray= {"abc","abc@.com.my","abc123@gmail.a","abc123@.com","abc123@.com.com",".abc@abc.com","abc()*@gmail.com","abc@%*.com","abc..2002@gmail.com","abc.@gmail.com ","abc@abc@gmail.com","abc@gmail.com.1a","abc@gmail.com.aa.au"};
+        for (int iterate=0; iterate<testCaseArray.length; iterate++) {
+            boolean result = validator.checkEmail(testCaseArray[iterate]);
+            Assert.assertFalse(result);
+        }
     }
 
     //TEST CASES FOR MOBILE NUMBER VALIDATION
