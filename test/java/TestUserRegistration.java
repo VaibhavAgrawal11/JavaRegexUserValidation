@@ -91,4 +91,21 @@ public class TestUserRegistration {
         boolean result = validator.checkAtLeastOneNumber("jJUakjswkw");
         Assert.assertFalse(result);
     }
+
+    //TEST CASES FOR PASSWORD HAVING EXACTLY ONE SPECIAL CHARACTER
+    @Test
+    public void givenPassword_WhenProper_ShouldHaveExactlyOneSpecialChar() {
+        boolean result = validator.checkExactlyOneSpecialCharacter("bgsdhj%HSsgs4");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenImproper_ShouldNotHaveExactlyOneSpecialChar() {
+        boolean result = validator.checkAtLeastOneNumber("jJUakjsw$%kw");
+        Assert.assertFalse(result);
+    }
+    @Test
+    public void givenPassword_WhenImproper_ShouldNotHaveExactlyOneSpecialChar2() {
+        boolean result = validator.checkAtLeastOneNumber("jJUakjswkw");
+        Assert.assertFalse(result);
+    }
 }
