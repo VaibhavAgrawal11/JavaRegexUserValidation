@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class UserValidation {
     public static void main(String[] args) {
-        System.out.println("Added feature to validate password having atleast one upper case");
+        System.out.println("Added feature to validate password having atleast one numeric digit.");
         //VALIDATING FIRST NAME
         System.out.println("Enter your first name:");
         Scanner sc = new Scanner(System.in);
@@ -53,7 +53,13 @@ public class UserValidation {
         boolean checkLength=checkPasswordLength(password);
         if(checkLength) {
             boolean checkUppercase = checkAtLeastOneUppercase(password);
-            if(checkUppercase==false)
+            if(checkUppercase)
+            {
+                boolean checkNumericValue = checkAtLeastOneNumber(password);
+                if(checkNumericValue == false)
+                    return false;
+            }
+            else
                 return false;
         }
         else
@@ -61,6 +67,15 @@ public class UserValidation {
         return true;
 
     }
+
+    //VALIDATE PASSWORD HAVING ATLEAST ONE NUMERIC DIGIT
+    static boolean checkAtLeastOneNumber(String password) {
+        Pattern passwordNumericPat = Pattern.compile(".*[0-9]+.*");
+        Matcher check = passwordNumericPat.matcher(password);
+        boolean passwordNumberCheck = check.matches();
+        return passwordNumberCheck;
+    }
+
     //VALIDATE PASSWORD HAVING AT LEAST ONE UPPER CASE CHARACTER
     static boolean checkAtLeastOneUppercase(String password) {
         Pattern passwordUpperCasePat = Pattern.compile(".*[A-Z]+.*");
