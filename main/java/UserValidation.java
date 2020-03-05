@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class UserValidation {
     public static void main(String[] args) {
-        System.out.println("Added feature to validate email address");
+        System.out.println("Added feature to validate mobile number");
         //VALIDATING FIRST NAME
         System.out.println("Enter your first name:");
         Scanner sc = new Scanner(System.in);
@@ -30,6 +30,22 @@ public class UserValidation {
             System.out.println("Valid email address");
         else
             System.out.println("Invalid email address");
+        //VALIDATING MOBILE NUMBER
+        System.out.println("Enter your mobile number:");
+        String mobNum = sc.nextLine();
+        boolean mobileNumberCheck = checkMobileNumber(mobNum);
+        if (mobileNumberCheck)
+            System.out.println("Valid mobile number");
+        else
+            System.out.println("Invalid mobile number");
+    }
+
+    //VALIDATE MOBILE NUMBER
+    static boolean checkMobileNumber(String mobNum) {
+        Pattern mobPat = Pattern.compile("^91[ ][0-9]{10}$");
+        Matcher check = mobPat.matcher(mobNum);
+        boolean mobCheck = check.matches();
+        return mobCheck;
     }
 
     //VALIDATE EMAIL ADDRESS
