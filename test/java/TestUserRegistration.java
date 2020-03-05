@@ -38,4 +38,21 @@ public class TestUserRegistration {
         boolean result = validator.checkEmail("abc.xyz@dhsco");
         Assert.assertFalse(result);
     }
+
+    //TEST CASES FOR MOBILE NUMBER VALIDATION
+    @Test
+    public void givenMobileNumber_WhenProper_ShouldReturnTrue(){
+        boolean result = validator.checkMobileNumber("91 9157981679");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenMobileNumber_WhenImproper_ShouldReturnFalse(){
+        boolean result = validator.checkEmail("91232231");
+        Assert.assertFalse(result);
+    }
+    @Test
+    public void givenMobileNumber_WhenImproper_ShouldReturnFalse2(){
+        boolean result = validator.checkEmail("919157981679");
+        Assert.assertFalse(result);
+    }
 }
