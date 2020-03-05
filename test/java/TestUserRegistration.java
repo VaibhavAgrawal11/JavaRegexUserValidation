@@ -79,4 +79,16 @@ public class TestUserRegistration {
         boolean result = validator.checkAtLeastOneUppercase("jakjswkw");
         Assert.assertFalse(result);
     }
+
+    //TEST CASES FOR PASSWORD HAVING ATLEAST ONE NUMERIC LETTER
+    @Test
+    public void givenPassword_WhenProper_ShouldHaveAtLeastOneNumber() {
+        boolean result = validator.checkAtLeastOneNumber("jak85j4swkwA");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenImproper_ShouldNotHaveNumber() {
+        boolean result = validator.checkAtLeastOneNumber("jJUakjswkw");
+        Assert.assertFalse(result);
+    }
 }
