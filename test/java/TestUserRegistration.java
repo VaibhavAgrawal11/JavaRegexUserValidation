@@ -18,12 +18,24 @@ public class TestUserRegistration {
     //TEST CASES FOR VALIDATING LAST NAME
     @Test
     public void givenLastName_WhenProper_ShouldReturnTrue(){
-        boolean result = validator.checklastName("Agrawal");
+        boolean result = validator.checkLastName("Agrawal");
         Assert.assertTrue(result);
     }
     @Test
     public void givenLastName_WhenImproper_ShouldReturnFalse(){
-        boolean result = validator.checklastName("aGraHGwal");
+        boolean result = validator.checkLastName("aGraHGwal");
+        Assert.assertFalse(result);
+    }
+
+    //TEST CASES FOR EMAIL VALIDATION
+    @Test
+    public void givenEmail_WhenProper_ShouldReturnTrue(){
+        boolean result = validator.checkEmail("abc.xyz@bl.co.in");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenEmail_WhenImproper_ShouldReturnFalse(){
+        boolean result = validator.checkEmail("abc.xyz@dhsco");
         Assert.assertFalse(result);
     }
 }
