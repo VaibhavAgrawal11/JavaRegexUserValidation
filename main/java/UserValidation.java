@@ -3,9 +3,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserValidation {
-
     public static void main(String[] args) {
-        System.out.println("Welcome to Regex simulator");
+        System.out.println("Added feature to validate first name");
         System.out.println("Enter your first name:");
         Scanner sc = new Scanner(System.in);
         String firstName = sc.nextLine();
@@ -23,5 +22,4 @@ public class UserValidation {
         boolean firstNameCheck = check.matches();
         return firstNameCheck;
     }
-
 }
