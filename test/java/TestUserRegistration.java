@@ -67,4 +67,16 @@ public class TestUserRegistration {
         boolean result = validator.checkPasswordLength("njsh");
         Assert.assertFalse(result);
     }
+
+    //TEST CASES FOR PASSWORD HAVING ATLEAST ONE USPPER CASE LETTER
+    @Test
+    public void givenPassword_WhenProper_ShouldHaveAtLeastOneUpperCase() {
+        boolean result = validator.checkAtLeastOneUppercase("jakjswkwA");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenImproper_ShouldNotHaveUpperCase() {
+        boolean result = validator.checkAtLeastOneUppercase("jakjswkw");
+        Assert.assertFalse(result);
+    }
 }
