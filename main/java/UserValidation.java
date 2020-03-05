@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class UserValidation {
     public static void main(String[] args) {
-        System.out.println("Added feature to validate password length");
+        System.out.println("Added feature to validate password having atleast one upper case");
         //VALIDATING FIRST NAME
         System.out.println("Enter your first name:");
         Scanner sc = new Scanner(System.in);
@@ -41,13 +41,35 @@ public class UserValidation {
         //VALIDATING PASSWORD
         System.out.println("Enter your password:");
         String password = sc.nextLine();
-        boolean passwordCheck = checkPasswordLength(password);
+        boolean passwordCheck = checkPassword(password);
         if (passwordCheck)
             System.out.println("Valid password");
         else
             System.out.println("Invalid password");
     }
 
+    //VALIDATE ALL CASES OF PASSWORD
+    private static boolean checkPassword(String password) {
+        boolean checkLength=checkPasswordLength(password);
+        if(checkLength) {
+            boolean checkUppercase = checkAtLeastOneUppercase(password);
+            if(checkUppercase==false)
+                return false;
+        }
+        else
+            return false;
+        return true;
+
+    }
+    //VALIDATE PASSWORD HAVING AT LEAST ONE UPPER CASE CHARACTER
+    static boolean checkAtLeastOneUppercase(String password) {
+        Pattern passwordUpperCasePat = Pattern.compile(".*[A-Z]+.*");
+        Matcher check = passwordUpperCasePat.matcher(password);
+        boolean passwordUpperCaseCheck = check.matches();
+        return passwordUpperCaseCheck;
+    }
+
+    //VALIDATE PASSWORD LENGTH
     static boolean checkPasswordLength(String password) {
         Pattern passwordLengthPat = Pattern.compile("^.{8,}");
         Matcher check = passwordLengthPat.matcher(password);
