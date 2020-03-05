@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class UserValidation {
     public static void main(String[] args) {
-        System.out.println("Added feature to validate password having atleast one numeric digit.");
+        System.out.println("Added feature to validate password having exactly one special character.");
         //VALIDATING FIRST NAME
         System.out.println("Enter your first name:");
         Scanner sc = new Scanner(System.in);
@@ -56,7 +56,13 @@ public class UserValidation {
             if(checkUppercase)
             {
                 boolean checkNumericValue = checkAtLeastOneNumber(password);
-                if(checkNumericValue == false)
+                if(checkNumericValue)
+                {
+                    boolean checkSpecialChar = checkExactlyOneSpecialCharacter(password);
+                    if(checkSpecialChar==false)
+                        return false;
+                }
+                else
                     return false;
             }
             else
@@ -66,6 +72,13 @@ public class UserValidation {
             return false;
         return true;
 
+    }
+
+    //VALIDATE PASSWORD HAVING EXACTLY ONE SPECIAL CHARACTER
+    static boolean checkExactlyOneSpecialCharacter(String password) {
+        Pattern passwordPatSpecialChar= Pattern.compile("^[^!@#$%^&*(),.?\":{}|<>]*[!@#$%^&*(),.?\":{}|<>][^!@#$%^&*(),.?\":{}|<>]*$");
+        Matcher check = passwordPatSpecialChar.matcher(password);
+        return check.matches();
     }
 
     //VALIDATE PASSWORD HAVING ATLEAST ONE NUMERIC DIGIT
