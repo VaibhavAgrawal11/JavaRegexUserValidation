@@ -55,4 +55,16 @@ public class TestUserRegistration {
         boolean result = validator.checkEmail("919157981679");
         Assert.assertFalse(result);
     }
+
+    //TEST CASES FOR PASSWORD LENGTH CHECK
+    @Test
+    public void givenPassword_WhenProper_ShouldBeGreaterThenEight() {
+        boolean result = validator.checkPasswordLength("njsahnadsbh");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void givenPassword_WhenImproper_ShouldNotBeGreaterThenEight() {
+        boolean result = validator.checkPasswordLength("njsh");
+        Assert.assertFalse(result);
+    }
 }
