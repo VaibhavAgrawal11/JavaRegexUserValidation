@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class UserValidation {
     public static void main(String[] args) {
-        System.out.println("Added feature to validate mobile number");
+        System.out.println("Added feature to validate password length");
         //VALIDATING FIRST NAME
         System.out.println("Enter your first name:");
         Scanner sc = new Scanner(System.in);
@@ -38,6 +38,21 @@ public class UserValidation {
             System.out.println("Valid mobile number");
         else
             System.out.println("Invalid mobile number");
+        //VALIDATING PASSWORD
+        System.out.println("Enter your password:");
+        String password = sc.nextLine();
+        boolean passwordCheck = checkPasswordLength(password);
+        if (passwordCheck)
+            System.out.println("Valid password");
+        else
+            System.out.println("Invalid password");
+    }
+
+    static boolean checkPasswordLength(String password) {
+        Pattern passwordLengthPat = Pattern.compile("^.{8,}");
+        Matcher check = passwordLengthPat.matcher(password);
+        boolean passwordLengthCheck = check.matches();
+        return passwordLengthCheck;
     }
 
     //VALIDATE MOBILE NUMBER
