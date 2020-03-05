@@ -115,7 +115,7 @@ public class UserValidation {
 
     //VALIDATE EMAIL ADDRESS
     static boolean checkEmail(String email) {
-        Pattern emailPat = Pattern.compile("^abc([+]?[-]?[.]?[_]?[\\w]+)?[@][a-z]+[.][a-z]{2,}([.]?[a-z]+)?$");
+        Pattern emailPat = Pattern.compile("^[a-z]+([+]?[-]?[.]?[_]?[\\w]+)?[@][a-z0-9]+[.][a-z]{2,}([.]?[a-z]+)?$");
         Matcher check = emailPat.matcher(email);
         boolean emailCheck = check.matches();
         return emailCheck;
