@@ -50,33 +50,15 @@ public class UserValidation {
 
     //VALIDATE ALL CASES OF PASSWORD
     private static boolean checkPassword(String password) {
-        boolean checkLength=checkPasswordLength(password);
-        if(checkLength) {
-            boolean checkUppercase = checkAtLeastOneUppercase(password);
-            if(checkUppercase)
-            {
-                boolean checkNumericValue = checkAtLeastOneNumber(password);
-                if(checkNumericValue)
-                {
-                    boolean checkSpecialChar = checkExactlyOneSpecialCharacter(password);
-                    if(checkSpecialChar==false)
-                        return false;
-                }
-                else
-                    return false;
-            }
-            else
-                return false;
-        }
+        if (checkPasswordLength(password) && checkAtLeastOneUppercase(password) && checkAtLeastOneNumber(password) && checkExactlyOneSpecialCharacter(password))
+            return true;
         else
             return false;
-        return true;
-
     }
 
     //VALIDATE PASSWORD HAVING EXACTLY ONE SPECIAL CHARACTER
     static boolean checkExactlyOneSpecialCharacter(String password) {
-        Pattern passwordPatSpecialChar= Pattern.compile("^[^!@#$%^&*(),.?\":{}|<>]*[!@#$%^&*(),.?\":{}|<>][^!@#$%^&*(),.?\":{}|<>]*$");
+        Pattern passwordPatSpecialChar = Pattern.compile("^[^!@#$%^&*(),.?\":{}|<>]*[!@#$%^&*(),.?\":{}|<>][^!@#$%^&*(),.?\":{}|<>]*$");
         Matcher check = passwordPatSpecialChar.matcher(password);
         return check.matches();
     }
@@ -93,6 +75,8 @@ public class UserValidation {
     static boolean checkAtLeastOneUppercase(String password) {
         Pattern passwordUpperCasePat = Pattern.compile(".*[A-Z]+.*");
         Matcher check = passwordUpperCasePat.matcher(password);
+
+
         boolean passwordUpperCaseCheck = check.matches();
         return passwordUpperCaseCheck;
     }
